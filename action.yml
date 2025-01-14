@@ -33,29 +33,29 @@ runs:
         if [ -z "${{ inputs.access-token }}" ]; then
           if [ -z "${{ inputs.depth }}" ]; then
             if [ "${{ inputs.submodule }}" = "true" ]; then
-              git clone https://github.com/${{ inputs.owner }}/${{ inputs.repository }}.git  --recursive
+              git clone --mirror https://github.com/${{ inputs.owner }}/${{ inputs.repository }}.git  --recursive
             else
-              git clone https://github.com/${{ inputs.owner }}/${{ inputs.repository }}.git
+              git clone --mirror https://github.com/${{ inputs.owner }}/${{ inputs.repository }}.git
             fi
           else
             if [ "${{ inputs.submodule }}" = "true" ]; then
-              git clone --depth="${{ inputs.depth }}" https://github.com/${{ inputs.owner }}/${{ inputs.repository }}.git  --recursive
+              git clone --mirror --depth="${{ inputs.depth }}" https://github.com/${{ inputs.owner }}/${{ inputs.repository }}.git  --recursive
             else
-              git clone --depth="${{ inputs.depth }}" https://github.com/${{ inputs.owner }}/${{ inputs.repository }}.git
+              git clone --mirror --depth="${{ inputs.depth }}" https://github.com/${{ inputs.owner }}/${{ inputs.repository }}.git
             fi
           fi
         else
           if [ -z "${{ inputs.depth }}" ]; then
             if [ "${{ inputs.submodule }}" = "true" ]; then
-              git clone https://${{ inputs.access-token }}@github.com/${{ inputs.owner }}/${{ inputs.repository }}.git  --recursive
+              git clone --mirror https://${{ inputs.access-token }}@github.com/${{ inputs.owner }}/${{ inputs.repository }}.git  --recursive
             else
-              git clone https://${{ inputs.access-token }}@github.com/${{ inputs.owner }}/${{ inputs.repository }}.git
+              git clone --mirror https://${{ inputs.access-token }}@github.com/${{ inputs.owner }}/${{ inputs.repository }}.git
             fi
           else
             if [ "${{ inputs.submodule }}" = "true" ]; then
-              git clone --depth="${{ inputs.depth }}" https://${{ inputs.access-token }}@github.com/${{ inputs.owner }}/${{ inputs.repository }}.git  --recursive
+              git clone --mirror --depth="${{ inputs.depth }}" https://${{ inputs.access-token }}@github.com/${{ inputs.owner }}/${{ inputs.repository }}.git  --recursive
             else
-              git clone --depth="${{ inputs.depth }}" https://${{ inputs.access-token }}@github.com/${{ inputs.owner }}/${{ inputs.repository }}.git
+              git clone --mirror --depth="${{ inputs.depth }}" https://${{ inputs.access-token }}@github.com/${{ inputs.owner }}/${{ inputs.repository }}.git
             fi
           fi
         fi
